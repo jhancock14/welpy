@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="?android:attr/listPreferredItemHeight"
+              android:padding="6dip">
+
+  <!--<TextView android:id="@+id/toptext" android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center_vertical" android:singleLine="true"/>-->
+
+    <ImageView
+        android:id="@+id/search_icon_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/checkbox_meat"
+        android:layout_toLeftOf="@+id/checkbox_meat"/>
+
+  <!--<CheckBox android:id="@+id/checkbox_meat"-->
+            <!--android:checked="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"/>-->
+</LinearLayout>
+
+<!-- From: file:/Users/johhan/AndroidstudioProjects/Welpy/app/src/main/res/layout/row.xml -->

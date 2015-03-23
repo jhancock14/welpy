@@ -1,0 +1,2 @@
+/Users/johhan/AndroidstudioProjects/Welpy/app/build/intermediates/classes/debug
+/Users/johhan/AndroidstudioProjects/Welpy/app/build/intermediates/pre-dexed/debug/gson-2.2.4-5c496243af06f6d6f3d2533d5763db9d55e7d971.jar

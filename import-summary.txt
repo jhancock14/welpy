@@ -1,0 +1,75 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .idea/
+* .idea/.name
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/encodings.xml
+* .idea/libraries/
+* .idea/libraries/gson_2_2_4.xml
+* .idea/libraries/scribe.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/scopes/
+* .idea/scopes/scope_settings.xml
+* .idea/uiDesigner.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* Welpy.iml
+* ant.properties
+* build.xml
+* out/
+* out/production/
+* out/production/Welpy/
+* out/production/Welpy/Welpy.apk
+* out/production/Welpy/Welpy.unaligned.apk
+* out/production/Welpy/com/
+* out/production/Welpy/com/welpy/
+* out/production/Welpy/com/welpy/BuildConfig.class
+* out/production/Welpy/com/welpy/MainActivity$DuckListAdapter$1.class
+* out/production/Welpy/com/welpy/MainActivity$DuckListAdapter.class
+* out/production/Welpy/com/welpy/MainActivity$FetchDucksTask.class
+* out/production/Welpy/com/welpy/MainActivity$RawDuckResponse$Icon.class
+* out/production/Welpy/com/welpy/MainActivity$RawDuckResponse$SearchResult.class
+* out/production/Welpy/com/welpy/MainActivity$RawDuckResponse.class
+* out/production/Welpy/com/welpy/MainActivity.class
+* out/production/Welpy/com/welpy/R$attr.class
+* out/production/Welpy/com/welpy/R$drawable.class
+* out/production/Welpy/com/welpy/R$id.class
+* out/production/Welpy/com/welpy/R$layout.class
+* out/production/Welpy/com/welpy/R$string.class
+* out/production/Welpy/com/welpy/R.class
+* proguard-project.txt
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* assets/ => app/src/main/assets/
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
