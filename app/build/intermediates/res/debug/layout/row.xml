@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="?android:attr/listPreferredItemHeight"
-              android:padding="6dip">
-
-  <!--<TextView android:id="@+id/toptext" android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center_vertical" android:singleLine="true"/>-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:padding="6dip">
 
     <ImageView
         android:id="@+id/search_icon_image"
-        android:layout_width="wrap_content"
+        android:layout_width="?android:attr/listPreferredItemHeight"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/checkbox_meat"
-        android:layout_toLeftOf="@+id/checkbox_meat"/>
+        android:clickable="false"
+        android:descendantFocusability="blocksDescendants"
+        android:scaleType="center" />
 
-  <!--<CheckBox android:id="@+id/checkbox_meat"-->
-            <!--android:checked="true"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"/>-->
-</LinearLayout>
+    <TextView
+        android:id="@+id/toptext"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_toRightOf="@+id/search_icon_image"
+        android:focusable="false"
+        android:gravity="center_vertical" />
+
+    <CheckBox
+        android:id="@+id/checkbox_meat"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_toRightOf="@+id/search_icon_image"
+        android:checked="true"
+        android:focusable="false" />
+
+
+</RelativeLayout>
 
 <!-- From: file:/Users/johhan/AndroidstudioProjects/Welpy/app/src/main/res/layout/row.xml -->

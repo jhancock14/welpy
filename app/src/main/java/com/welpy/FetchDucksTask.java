@@ -1,7 +1,6 @@
 package com.welpy;
 
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,14 +18,14 @@ import java.util.List;
 import static com.google.gson.FieldNamingPolicy.UPPER_CAMEL_CASE;
 
 /**
-* Created by johhan on 3/2/15.
-*/
+ * Created by johhan on 3/2/15.
+ */
 class FetchDucksTask extends AsyncTask<Void, Void, List<RawDuckResponse.SearchResult>> {
 
-//    String searchUrl = "http://api.duckduckgo.com/?q=World+News&format=json&t=welpy";
+    //    String searchUrl = "http://api.duckduckgo.com/?q=World+News&format=json&t=welpy";
     String searchUrl = "http://api.duckduckgo.com/?q=Doge&format=json&t=welpy";
-    HttpClient httpClient = new DefaultHttpClient();
     HttpGet get = new HttpGet(searchUrl);
+    HttpClient httpClient = new DefaultHttpClient();
     HttpResponse httpResponse = null;
     String searchResult = null;
     private DuckListAdapter mAdapter;
@@ -59,10 +58,10 @@ class FetchDucksTask extends AsyncTask<Void, Void, List<RawDuckResponse.SearchRe
     }
 
     @Override
-    protected void onPostExecute(List<RawDuckResponse.SearchResult> ducks) {
-        super.onPostExecute(ducks);
-        mAdapter.addAll(ducks);
-        mAdapter.addAll(ducks);
-        mAdapter.addAll(ducks);
+    protected void onPostExecute(List<RawDuckResponse.SearchResult> searchResults) {
+        super.onPostExecute(searchResults);
+        mAdapter.addAll(searchResults);
+        mAdapter.addAll(searchResults);
+        mAdapter.addAll(searchResults);
     }
 }

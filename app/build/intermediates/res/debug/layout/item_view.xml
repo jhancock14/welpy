@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
+    <TextView
+        android:id="@+id/nametext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:singleLine="true" />
 
-</LinearLayout><!-- From: file:/Users/johhan/AndroidstudioProjects/Welpy/app/src/main/res/layout/item_view.xml -->
+    <ImageView
+        android:id="@+id/search_icon_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/toptext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/search_icon_image"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/checkbox_meat"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_toRightOf="@+id/search_icon_image"
+        android:checked="true"
+        android:focusable="false" />
+
+</RelativeLayout><!-- From: file:/Users/johhan/AndroidstudioProjects/Welpy/app/src/main/res/layout/item_view.xml -->

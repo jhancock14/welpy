@@ -26,8 +26,10 @@ class DuckListAdapter extends ArrayAdapter<RawDuckResponse.SearchResult> {
         v = vi.inflate(R.layout.row, null);
 
         RawDuckResponse.SearchResult searchResult = getItem(position);
-//        CheckBox checkBox = (CheckBox) v.findViewById(R.id.checkbox_meat);
-//        checkBox.setText(searchResult.result);
+
+        // ==========
+        CheckBox checkBox = (CheckBox) v.findViewById(R.id.checkbox_meat);
+        checkBox.setText(searchResult.text);
 
         ImageView viewById = (ImageView) v.findViewById(R.id.search_icon_image);
         RawDuckResponse.Icon icon = searchResult.icon;
@@ -37,13 +39,15 @@ class DuckListAdapter extends ArrayAdapter<RawDuckResponse.SearchResult> {
             new ImageDownloader(viewById).execute(url);
         }
 
-//        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                String checkedState = isChecked ? "checked" : "unchecked";
-//                Toast.makeText(getContext(), "Box is " + checkedState, Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
+        // =========
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String checkedState = isChecked ? "checked" : "unchecked";
+                Toast.makeText(getContext(), "Box is " + checkedState, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //      checkBox.setOnClickListener(new View.OnClickListener() {
 //        @Override
