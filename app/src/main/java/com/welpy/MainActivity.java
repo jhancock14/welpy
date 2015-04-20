@@ -38,7 +38,8 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, DetailPageActivity.class);
 
-                RawDuckResponse.SearchResult searchResult = (RawDuckResponse.SearchResult) parent.getItemAtPosition(position);
+                DuckListAdapter.StateContainer stateContainer = (DuckListAdapter.StateContainer) parent.getItemAtPosition(position);
+                RawDuckResponse.SearchResult searchResult = stateContainer.searchResult;
 
                 // our name detail
                 TextView nameView = (TextView) view.findViewById(R.id.nametext);
@@ -51,6 +52,8 @@ public class MainActivity extends Activity {
                 // our icon detail
                 ImageView imageView = (ImageView) view.findViewById(R.id.search_icon_image);
                 intent.putExtra("image", searchResult.icon.url);
+
+                intent.putExtra("isChecked", stateContainer.isChecked);
 
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Item clicked!", Toast.LENGTH_SHORT).show();

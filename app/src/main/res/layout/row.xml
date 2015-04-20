@@ -29,6 +29,5 @@
         android:checked="true"
         android:focusable="false" />
 
-
 </RelativeLayout>
 

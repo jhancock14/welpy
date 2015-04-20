@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <TextView
         android:id="@+id/nametext"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:singleLine="true" />
@@ -26,10 +25,8 @@
 
     <CheckBox
         android:id="@+id/checkbox_meat"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_toRightOf="@+id/search_icon_image"
-        android:checked="true"
-        android:focusable="false" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/search_icon_image" />
 
 </RelativeLayout>
