@@ -2,11 +2,32 @@
 <items version="2" >
 
     <item
+        jar="/Users/johhan/AndroidstudioProjects/Welpy/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/johhan/AndroidstudioProjects/Welpy/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-10528ddd6ae2df69a42631890ff40deba3550b17.jar" />
+    </item>
+    <item
+        jar="/Users/johhan/AndroidstudioProjects/Welpy/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/johhan/AndroidstudioProjects/Welpy/app/build/intermediates/pre-dexed/debug/classes-d43e0c0aa016b9920eab25da5dc5fa0d82cc8e9f.jar" />
+    </item>
+    <item
         jar="/Users/johhan/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="a60a5e993c98c864010053cb901b7eab25306568">
         <dex dex="/Users/johhan/AndroidstudioProjects/Welpy/app/build/intermediates/pre-dexed/debug/gson-2.2.4-5c496243af06f6d6f3d2533d5763db9d55e7d971.jar" />
+    </item>
+    <item
+        jar="/Users/johhan/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/johhan/AndroidstudioProjects/Welpy/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-411a62d1100b2bbf500e5fe3de50ed0296f0026a.jar" />
     </item>
 
 </items>

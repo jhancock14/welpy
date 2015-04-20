@@ -35,7 +35,7 @@ class ImageDownloader extends AsyncTask<String, Void, Bitmap> {
             try {
                 input = new URL(urlDisplay).openStream();
             } catch (MalformedURLException e) {
-                Log.e("ImageDownloader", String.format("MalformedURLException for url: \"%s\"", urlDisplay));
+                Log.e("ImageDownloader", String.format("MalformedURLException for imageUrl: \"%s\"", urlDisplay));
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();

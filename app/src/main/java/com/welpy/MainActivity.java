@@ -1,8 +1,13 @@
 package com.welpy;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -21,10 +26,8 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
     private DuckListAdapter mAdapter;
+    private BroadcastReceiver checkUpdateReceiver;
 
-    /**
-     * Called when the activity is first created.
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,17 +57,40 @@ public class MainActivity extends Activity {
                 intent.putExtra("image", searchResult.icon.url);
 
                 intent.putExtra("isChecked", stateContainer.isChecked);
+                intent.putExtra("id", searchResult.firstURL);
 
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Item clicked!", Toast.LENGTH_SHORT).show();
-
-
             }
         };
 
-//        onItemClickListener = new MyItemClickListener(MainActivity.this);
         listview_layout.setOnItemClickListener(onItemClickListener);
 
         new FetchDucksTask(mAdapter).execute();
+
+        checkUpdateReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                boolean isChecked = intent.getBooleanExtra("isChecked", false);
+                String id = intent.getStringExtra("id");
+
+                for (int i=0; i<mAdapter.getCount(); i++) {
+                    DuckListAdapter.StateContainer item = mAdapter.getItem(i);
+                    if (TextUtils.equals(item.searchResult.firstURL, id)) {
+                        item.isChecked = isChecked;
+                        mAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        };
+        IntentFilter intentFilter = new IntentFilter("UPDATE_CHECK_STATE");
+        LocalBroadcastManager.getInstance(this).registerReceiver(checkUpdateReceiver, intentFilter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(checkUpdateReceiver);
+        checkUpdateReceiver = null;
     }
 }
