@@ -26,9 +26,11 @@ class FetchDucksTask extends AsyncTask<Void, Void, List<RawDuckResponse.SearchRe
     HttpResponse httpResponse = null;
     String searchResult = null;
     private DuckListAdapter mAdapter;
+    private final ICallback callback;
 
-    FetchDucksTask(DuckListAdapter mAdapter) {
+    FetchDucksTask(DuckListAdapter mAdapter, ICallback callback) {
         this.mAdapter = mAdapter;
+        this.callback = callback;
     }
 
     @Override
@@ -60,5 +62,10 @@ class FetchDucksTask extends AsyncTask<Void, Void, List<RawDuckResponse.SearchRe
         mAdapter.addSearchResults(searchResults);
         mAdapter.addSearchResults(searchResults);
         mAdapter.addSearchResults(searchResults);
+        callback.onPostExecute();
+    }
+
+    public interface ICallback {
+        void onPostExecute();
     }
 }

@@ -15,6 +15,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // http://api.duckduckgo.com/?q=World+News&format=json&t=welpy&pretty=1
 // TODO
 // checkbox
@@ -29,7 +32,7 @@ public class MainActivity extends Activity {
     private BroadcastReceiver checkUpdateReceiver;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAdapter = new DuckListAdapter(this);
         setContentView(R.layout.main);
@@ -66,7 +69,22 @@ public class MainActivity extends Activity {
 
         listview_layout.setOnItemClickListener(onItemClickListener);
 
-        new FetchDucksTask(mAdapter).execute();
+        FetchDucksTask.ICallback callback = new FetchDucksTask.ICallback() {
+            @Override
+            public void onPostExecute() {
+                if (savedInstanceState == null) {
+                    return;
+                }
+
+                List<Integer> checkedStates = savedInstanceState.getIntegerArrayList("CHECKED_STATES");
+                for (int i=0; i<mAdapter.getCount(); i++) {
+                    // Note: assumes same number of results!
+                    mAdapter.getItem(i).isChecked = checkedStates.get(i) == 1;
+                }
+                mAdapter.notifyDataSetChanged();
+            }
+        };
+        new FetchDucksTask(mAdapter, callback).execute();
 
         checkUpdateReceiver = new BroadcastReceiver() {
             @Override
@@ -74,7 +92,7 @@ public class MainActivity extends Activity {
                 boolean isChecked = intent.getBooleanExtra("isChecked", false);
                 String id = intent.getStringExtra("id");
 
-                for (int i=0; i<mAdapter.getCount(); i++) {
+                for (int i = 0; i < mAdapter.getCount(); i++) {
                     DuckListAdapter.StateContainer item = mAdapter.getItem(i);
                     if (TextUtils.equals(item.searchResult.firstURL, id)) {
                         item.isChecked = isChecked;
@@ -85,6 +103,27 @@ public class MainActivity extends Activity {
         };
         IntentFilter intentFilter = new IntentFilter("UPDATE_CHECK_STATE");
         LocalBroadcastManager.getInstance(this).registerReceiver(checkUpdateReceiver, intentFilter);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        ArrayList<Integer> checkedStates = new ArrayList<>(mAdapter.getCount());
+        for (int i = 0; i < mAdapter.getCount(); i++) {
+            Integer checkedState = mAdapter.getItem(i).isChecked ? 1 : 0;
+            checkedStates.add(checkedState);
+        }
+
+        boolean[] booleans = new boolean[mAdapter.getCount()];
+        for (int i = 0; i < mAdapter.getCount(); i++) {
+            booleans[i] = mAdapter.getItem(i).isChecked;
+        }
+
+        // TODO: This should really be done with a map of id to checkedState, in case the results
+        // change from one call to the next
+        outState.putIntegerArrayList("CHECKED_STATES", checkedStates);
+        outState.putBooleanArray("CHECKED_STATES_BOOLEAN", booleans);
     }
 
     @Override
