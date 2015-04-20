@@ -20,6 +20,8 @@ class DuckListAdapter extends ArrayAdapter<DuckListAdapter.StateContainer> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO: use view recycling and a view holder
+
         View v;
         LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         v = vi.inflate(R.layout.row, null);
