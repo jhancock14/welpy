@@ -10,10 +10,9 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-/**
-* Created by johhan on 3/2/15.
-*/
-class DuckListAdapter extends ArrayAdapter<RawDuckResponse.SearchResult> {
+import java.util.List;
+
+class DuckListAdapter extends ArrayAdapter<DuckListAdapter.StateContainer> {
 
     DuckListAdapter(Context context) {
         super(context, 0);
@@ -24,21 +23,20 @@ class DuckListAdapter extends ArrayAdapter<RawDuckResponse.SearchResult> {
         View v;
         LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         v = vi.inflate(R.layout.row, null);
-
-        RawDuckResponse.SearchResult searchResult = getItem(position);
+        final StateContainer item = getItem(position);
+        RawDuckResponse.SearchResult searchResult = item.searchResult;
 
         // ==========
         CheckBox checkBox = (CheckBox) v.findViewById(R.id.checkbox_meat);
         checkBox.setText(searchResult.text);
+        checkBox.setChecked(item.isChecked);
 
         ImageView viewById = (ImageView) v.findViewById(R.id.search_icon_image);
         RawDuckResponse.Icon icon = searchResult.icon;
 
         if (icon != null) {
-            String url = icon.url;
-            new ImageDownloader(viewById).execute(url);
+            new ImageDownloader(viewById).execute(icon.url);
         }
-
 
         // =========
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -46,15 +44,28 @@ class DuckListAdapter extends ArrayAdapter<RawDuckResponse.SearchResult> {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 String checkedState = isChecked ? "checked" : "unchecked";
                 Toast.makeText(getContext(), "Box is " + checkedState, Toast.LENGTH_SHORT).show();
+                item.isChecked = isChecked;
             }
         });
 
-//      checkBox.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//          //TODO-XXX
-//        }
-//      });
         return v;
+    }
+
+    public void addSearchResults(List<RawDuckResponse.SearchResult> searchResults) {
+        setNotifyOnChange(false);
+        for (RawDuckResponse.SearchResult searchResult : searchResults) {
+            add(new StateContainer(searchResult));
+        }
+        setNotifyOnChange(true);
+        notifyDataSetChanged();
+    }
+
+    public static class StateContainer {
+        final RawDuckResponse.SearchResult searchResult;
+        Boolean isChecked = false;
+
+        public StateContainer(RawDuckResponse.SearchResult searchResult) {
+            this.searchResult = searchResult;
+        }
     }
 }

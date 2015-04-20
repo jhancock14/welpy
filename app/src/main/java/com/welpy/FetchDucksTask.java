@@ -17,9 +17,6 @@ import java.util.List;
 
 import static com.google.gson.FieldNamingPolicy.UPPER_CAMEL_CASE;
 
-/**
- * Created by johhan on 3/2/15.
- */
 class FetchDucksTask extends AsyncTask<Void, Void, List<RawDuckResponse.SearchResult>> {
 
     //    String searchUrl = "http://api.duckduckgo.com/?q=World+News&format=json&t=welpy";
@@ -36,7 +33,7 @@ class FetchDucksTask extends AsyncTask<Void, Void, List<RawDuckResponse.SearchRe
 
     @Override
     protected List<RawDuckResponse.SearchResult> doInBackground(Void... params) {
-        ArrayList<RawDuckResponse.SearchResult> searchResults = new ArrayList<RawDuckResponse.SearchResult>();
+        ArrayList<RawDuckResponse.SearchResult> searchResults = new ArrayList<>();
         try {
             httpResponse = httpClient.execute(get);
         } catch (IOException e) {
@@ -60,8 +57,8 @@ class FetchDucksTask extends AsyncTask<Void, Void, List<RawDuckResponse.SearchRe
     @Override
     protected void onPostExecute(List<RawDuckResponse.SearchResult> searchResults) {
         super.onPostExecute(searchResults);
-        mAdapter.addAll(searchResults);
-        mAdapter.addAll(searchResults);
-        mAdapter.addAll(searchResults);
+        mAdapter.addSearchResults(searchResults);
+        mAdapter.addSearchResults(searchResults);
+        mAdapter.addSearchResults(searchResults);
     }
 }
